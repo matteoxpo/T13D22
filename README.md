@@ -20,7 +20,7 @@ The russian version of the task can be found in the repository.
 4. [Chapter IV](#chapter-iv)
 
 
-## Chapter I
+# Chapter I
 
 ## Level 4. Room 1.
 
@@ -72,7 +72,7 @@ You take a look at the old, yellowed pieces of paper to the right of the compute
 ***LOADING…***
 
 
-## Chapter II
+# Chapter II
 
 ## List 1.
 
@@ -118,7 +118,7 @@ But to do that you'll have to create your own encryption program and work with t
 ***LOADING…***
 
 
-## Chapter III
+# Chapter III
 
 ## Quest 1. Open and read.
 
@@ -176,7 +176,7 @@ Supplement the src/cipher.c program by connecting it to the created logger which
 
 ***LOADING...***
 
-## Chapter IV
+# Chapter IV
 
 As soon as you save all the changes, the computer screen turns off. A few seconds later, the only fluorescent lamp in the room also goes off, leaving you in the darkness. There is just a thin line of light from behind the door illuminating your face. 
 
