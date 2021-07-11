@@ -1,6 +1,8 @@
 # T13D22
 The russian version of the task can be found in the repository.
 
+You can find some useful video materials [here](https://edu.21-school.ru/video/selection/6b681d37-774d-44c0-8358-7d0b329742cb).
+
 ![This day will help you get acquainted with text files processing.](misc/eng/images/day13_door.png)
 
 
@@ -124,9 +126,24 @@ But to do that you'll have to create your own encryption program and work with t
 
 \> *Update the local repository*
 
-A good place to start is by opening and reading the file. It would be best to create a function in a file, let's say in src/cipher.c, and implement reading and output of a random text file to the console. You need also to add a menu to the program, with menu item 1 – specifying the path to the file via stdin, to open and read it.
+A good place to start is by opening and reading the file. It would be best to 
+create a function in a file, let's say in src/cipher.c, and implement reading 
+and output of a random text file to the console. You need also to add a menu 
+to the program, with menu item 1 – specifying the path to the file via stdin, 
+to open and read it.
 
-***== Quest 1 received. Create an src/cipher.c program. Add a console menu to the program and implement its first item – specifying the path to the text file via stdin, to open, read, and output it to the console. If the file is empty, then output "n/a". Build the project using the Makefile. Stage name: cipher. Executable file name: cipher. ==***
+***== Quest 1 received. Create an src/cipher.c program. Add a console menu to the program and implement its first
+item – specifying the path to the text file via stdin, to open, read, and output it to the console. If the file
+is empty or does not exist, then output "n/a". Build the project using the Makefile. Stage name: cipher.
+Executable file name: cipher. The executable file must be located in the root of the repository in the
+build folder, the path to the text file is also set relative to the root directory ==***
+
+| Input | Output |
+| ------ | ------ |
+| 1<br/>src/text.txt | Aloha! |
+
+> DON'T FORGET! All your programs are tested for the style norm and memory leaks. Start-up instructions
+> the list of tests is also in the `materials` folder
 
 ***LOADING...***
 
@@ -137,6 +154,10 @@ Great, file reading is done.
 Now you need to practice writing to the file. You can add a function to src/cipher.c for writing arbitrary text information from the console to a text file as a new string. Menu item 2 – receiving an arbitrary text string and writing it to the loaded file.
 
 ***== Quest 2 received. Supplement the src/cipher.c program. Add menu item 2 – receiving an arbitrary text string from the console and writing it to the file loaded in item 1, as a new line. Output the contents of the file to the console. Build the project using the Makefile. Stage name: cipher. Executable file name: cipher. ==***
+
+| Input | Output |
+| ------ | ------ |
+| 1<br/>tests/Quest_2/test.txt<br/>2<br/>Some text | Some text<br/>Some text<br/>Some text |
 
 ***LOADING...***
 
