@@ -172,6 +172,8 @@ Do not forget the key as you might need some of these modules in the future.
 
 ***== Quest 3 received. Supplement the src/cipher.c program. Add item 3 to the menu – encryption of all .c files using a Caesar cipher and clearing all .h files from the specified directory. The shift for a Caesar cipher is also set as a parameter via the console. Save all modified files and src/cipher.c in the repository, replacing the original ones. Build the project using the Makefile. Stage name: cipher. Executable file name: cipher. ==***
 
+> This task is not processed by the automatic testing system
+
 ***LOADING...***
 
 
@@ -180,6 +182,8 @@ Do not forget the key as you might need some of these modules in the future.
 Having completed the encryption of all AI modules, you are worried that a Caesar cipher is somewhat... too simple. The AI can easily crack it. If you could use a more complex algorithm... For example, DES. You can at least try. If it fails – no problem, Caesar has already protected the important files. Put the start in menu item 4.
 
 ***== Quest 4 received. Supplement the src/cipher.c program. Add item 4 to the menu – encryption of all .c files using the DES algorithm and clearing all .h files from the specified directory. Build the project using the Makefile. Stage name: cipher. Executable file name: cipher. ==***
+
+> This task is not processed by the automatic testing system
 
 ***LOADING...***
 
@@ -194,6 +198,8 @@ As a test, you can connect logging to the src/cipher.c encryption program develo
 
 ***== Quest 5 received. Create src/logger.c and src/logger.h files to implement the logger. Add log_init(char \*filename), log(char \*message, log_level level), and log_close() functions to the files for creating a log file with the given name, writing the transmitted message in the created log file, and closing the log accordingly. Message format: an indication of the logging level (DEBUG, INFO, WARNING, ERROR), time, and the actual message. \
 Supplement the src/cipher.c program by connecting it to the created logger which writes the main actions of the program in the file (File "aaa.c" open; String wrote in the "bbb.h" file, and so on). Build the project using the Makefile. Stage name: loggin_cipher. Executable file name: logging_cipher. ==***
+
+> This task is not processed by the automatic testing system
 
 ***LOADING...***
 
