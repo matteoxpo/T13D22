@@ -134,7 +134,7 @@ to open and read it.
 
 ***== Quest 1 received. Create an src/cipher.c program. Add a console menu to the program and implement its first
 item – specifying the path to the text file via stdin, to open, read, and output it to the console. If the file
-is empty or does not exist or any other error, then output "n/a". If -1 is applied to the input, the program should exit. Build the project using the Makefile. Stage name: cipher.
+is empty or does not exist or any other error, then output "n/a". If -1 is applied to the input, the program should exit. After executing each menu item, except -1, there should be a new line. Build the project using the Makefile. Stage name: cipher.
 Executable file name: cipher. The executable file must be located in the root of the repository in the
 build folder, the path to the text file is also set relative to the root directory ==***
 
@@ -155,11 +155,11 @@ Great, file reading is done.
 Now you need to practice writing to the file. You can add a function to src/cipher.c for writing arbitrary text information from the console to a text file as a new string. Menu item 2 – receiving an arbitrary text string and writing it to the loaded file.
 
 ***== Quest 2 received. Supplement the src/cipher.c program. Add menu item 2 – receiving an arbitrary text string from the console and writing it to the file loaded in item 1, as a new line. Output the contents of the file to the console. If the file
-is empty or does not exist or any other error, then output "n/a". If -1 is applied to the input, the program should exit. Build the project using the Makefile. Stage name: cipher. Executable file name: cipher. ==***
+is empty or does not exist or any other error, then output "n/a". If -1 is applied to the input, the program should exit. After executing each menu item, except -1, there should be a new line. Build the project using the Makefile. Stage name: cipher. Executable file name: cipher. ==***
 
 | Input | Output |
 | ------ | ------ |
-| 1<br/>tests/Quest_2/test.txt<br/>2<br/>Bek the great<br/>-1 | I_love<br/>I_love<br/>Bek the great |
+| 1<br/>tests/Quest_2/test.txt<br/>2<br/>Bek the great<br/>-1 | I_love<br/><br/>I_love<br/>Bek the great |
 | 2<br/>Bek the great<br/>-1 | n/a |
 
 
