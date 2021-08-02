@@ -142,6 +142,7 @@ build folder. ==***
 | ------ | ------ | ------|
 | 1<br>text.txt<br/>-1 | Aloha!<br/> | Aloha! |
 | 1<br>abc.txt<br/>1<br/>abc.txt<br/>-1 | Hihi_haha<br/><br/>Hihi_haha<br/><br/> | Hihi_haha`\n` |
+| 1<br>doesnt_exist.t_x_t<br/>1<br/>love.txt<br/>-1 | n/a<br/>i_love_sh21<br/> | i_love_sh21 |
 
 > DON'T FORGET! All your programs are tested for the style norm and memory leaks. Start-up instructions
 > the list of tests is also in the `materials` folder
@@ -154,7 +155,7 @@ build folder. ==***
 Great, file reading is done. 
 Now you need to practice writing to the file. You can add a function to src/cipher.c for writing arbitrary text information from the console to a text file as a new string. Menu item 2 – receiving an arbitrary text string and writing it to the loaded file.
 
-***== Quest 2 received. Supplement the src/cipher.c program. Add menu item 2 – receiving an arbitrary text string from the console and writing it to the file loaded in item 1, as a new line. Output the contents of the file to the console. If the file
+***== Quest 2 received. Supplement the src/cipher.c program. Add menu item 2 – receiving an arbitrary line of text from the console and writing it to the end of the file uploaded in step 1. Output the contents of the file to the console. If the file
 is empty or does not exist or any other error, then output "n/a". If -1 is applied to the input, the program should exit. After executing each menu item, except -1, there should be a new line. Build the project using the Makefile. Stage name: cipher. Executable file name: cipher. ==***
 
 | Input | Output| File |
@@ -197,11 +198,19 @@ Having completed the encryption of all AI modules, you are worried that a Caesar
 
 All the sources have been encrypted and saved, there is no way back. Before you continue your journey, you think that it would be nice to write the actions your programs perform in a file. Your memory can fail you. Moreover, it will facilitate debugging and testing, plus, by checking these records later, you can figure out what was happening with the program at certain points of its operation. It seems to be called logging.
 
-You can organize logging in a separate module and connect it to your programs later using a header file. It makes sense to create src/logger.c and src/logger.h files. Add `log_init(char *filename)`, `log(char *message, log_level level)`, and `log_close()` functions to the files for creating a log file with the given name, writing the transmitted message in the created log file, and closing the log accordingly. Message format: an indication of the logging level (DEBUG, INFO, WARNING, ERROR), time, and the actual message.
+You can organize logging in a separate module and connect it to your programs later using a header file. It makes sense to create src/logger.c and src/logger.h files. Add 
+
+`FILE* log_init(char *filename);`
+
+`int logcat(FILE* log_file, char *message, log_level level);`
+
+`int log_close(FILE* log_file);`
+
+ functions to the files for creating a log file with the given name, writing the transmitted message in the created log file, and closing the log accordingly. Message format: an indication of the logging level (DEBUG, INFO, WARNING, ERROR), time, and the actual message.
 
 As a test, you can connect logging to the src/cipher.c encryption program developed earlier, to record the main actions in the log. And don't forget to reflect all changes in the repository!
 
-***== Quest 5 received. Create src/logger.c and src/logger.h files to implement the logger. Add log_init(char \*filename), log(char \*message, log_level level), and log_close() functions to the files for creating a log file with the given name, writing the transmitted message in the created log file, and closing the log accordingly. Message format: an indication of the logging level (DEBUG, INFO, WARNING, ERROR), time, and the actual message. \
+***== Quest 5 received. Create src/logger.c and src/logger.h files to implement the logger. Add log_init, logcat, and log_close functions to the files for creating a log file with the given name, writing the transmitted message in the created log file, and closing the log accordingly. Message format: an indication of the logging level (DEBUG, INFO, WARNING, ERROR), time, and the actual message. \
 Supplement the src/cipher.c program by connecting it to the created logger which writes the main actions of the program in the file (File "aaa.c" open; String wrote in the "bbb.h" file, and so on). Build the project using the Makefile. Stage name: loggin_cipher. Executable file name: logging_cipher. ==***
 
 > This task is not processed by the automatic testing system
