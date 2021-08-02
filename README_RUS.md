@@ -156,6 +156,7 @@
 | ------ | ------ | ----- |
 | 1<br/>tests/Quest_2/test.txt<br/>2<br/>Bek the great<br/>-1 | I_love<br/><br/>I_love<br/>Bek the great | I_love`\n` |
 | 2<br/>Bek the great<br/>-1 | n/a |  |
+| 1<br/>doesnt_exist.txt<br/>2<br/>Wow<br/>-1|n/a<br/>n/a||
 
 ***LOADING...***
 
