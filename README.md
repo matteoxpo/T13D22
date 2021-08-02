@@ -141,7 +141,7 @@ build folder, the path to the text file is also set relative to the root directo
 | Input | Output | File|
 | ------ | ------ | ------|
 | 1<br>text.txt<br/>-1 | Aloha!<br/> | Aloha! |
-| 1<br>abc.txt<br/>1<br/>src/abc.txt<br/>-1 | Hihi_haha<br/><br/>Hihi_haha | Hihi_haha`\n` |
+| 1<br>abc.txt<br/>1<br/>abc.txt<br/>-1 | Hihi_haha<br/><br/>Hihi_haha | Hihi_haha`\n` |
 
 > DON'T FORGET! All your programs are tested for the style norm and memory leaks. Start-up instructions
 > the list of tests is also in the `materials` folder

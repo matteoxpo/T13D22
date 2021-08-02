@@ -135,7 +135,7 @@
 | Входные данные | Выходные данные | Файл |
 | ------ | ------ | ------|
 | 1<br>text.txt<br/>-1 | Aloha!<br/> | Aloha! |
-| 1<br>abc.txt<br/>1<br/>src/abc.txt<br/>-1 | Hihi_haha<br/><br/>Hihi_haha | Hihi_haha`\n` |
+| 1<br>abc.txt<br/>1<br/>abc.txt<br/>-1 | Hihi_haha<br/><br/>Hihi_haha | Hihi_haha`\n` |
 
 
 > НЕ ЗАБЫВАЙ! Все твои программы тестируются на стилевую норму и утечки памяти. Инструкция по запуску 
