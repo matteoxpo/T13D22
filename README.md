@@ -140,8 +140,8 @@ build folder, the path to the text file is also set relative to the root directo
 
 | Input | Output | File|
 | ------ | ------ | ------|
-| 1<br>src/text.txt<br/>-1 | Aloha!<br/> | Aloha! |
-| 1<br>src/abc.txt<br/>1<br/>src/abc.txt<br/>-1 | Hihi_haha<br/><br/>Hihi_haha | Hihi_haha`\n` |
+| 1<br>text.txt<br/>-1 | Aloha!<br/> | Aloha! |
+| 1<br>abc.txt<br/>1<br/>src/abc.txt<br/>-1 | Hihi_haha<br/><br/>Hihi_haha | Hihi_haha`\n` |
 
 > DON'T FORGET! All your programs are tested for the style norm and memory leaks. Start-up instructions
 > the list of tests is also in the `materials` folder
@@ -159,7 +159,7 @@ is empty or does not exist or any other error, then output "n/a". If -1 is appli
 
 | Input | Output| File |
 | ------ | ------ | ----- |
-| 1<br/>tests/Quest_2/test.txt<br/>2<br/>Bek the great<br/>-1 | I_love<br/><br/>I_love<br/>Bek the great | I_love`\n` |
+| 1<br/>test.txt<br/>2<br/>Bek the great<br/>-1 | I_love<br/><br/>I_love<br/>Bek the great | I_love`\n` |
 | 2<br/>Bek the great<br/>-1 | n/a |  |
 | 1<br/>doesnt_exist.txt<br/>2<br/>Wow<br/>-1|n/a<br/>n/a||
 

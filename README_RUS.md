@@ -134,8 +134,8 @@
 
 | Входные данные | Выходные данные | Файл |
 | ------ | ------ | ------|
-| 1<br>src/text.txt<br/>-1 | Aloha!<br/> | Aloha! |
-| 1<br>src/abc.txt<br/>1<br/>src/abc.txt<br/>-1 | Hihi_haha<br/><br/>Hihi_haha | Hihi_haha`\n` |
+| 1<br>text.txt<br/>-1 | Aloha!<br/> | Aloha! |
+| 1<br>abc.txt<br/>1<br/>src/abc.txt<br/>-1 | Hihi_haha<br/><br/>Hihi_haha | Hihi_haha`\n` |
 
 
 > НЕ ЗАБЫВАЙ! Все твои программы тестируются на стилевую норму и утечки памяти. Инструкция по запуску 
@@ -154,7 +154,7 @@
 
 | Входные данные | Выходные данные | Файл |
 | ------ | ------ | ----- |
-| 1<br/>tests/Quest_2/test.txt<br/>2<br/>Bek the great<br/>-1 | I_love<br/><br/>I_love<br/>Bek the great | I_love`\n` |
+| 1<br/>test.txt<br/>2<br/>Bek the great<br/>-1 | I_love<br/><br/>I_love<br/>Bek the great | I_love`\n` |
 | 2<br/>Bek the great<br/>-1 | n/a |  |
 | 1<br/>doesnt_exist.txt<br/>2<br/>Wow<br/>-1|n/a<br/>n/a||
 
