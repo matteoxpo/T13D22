@@ -156,8 +156,8 @@
 | ------ | ------ | ----- |
 | 1<br/>test.txt<br/>2<br/>Bek the great<br/>-1 | I_love<br/><br/>I_love<br/>Bek the great<br/> | I_love`\n` |
 | 2<br/>Bek the great<br/>-1 | n/a<br/> |  |
-| 1<br/>doesnt_exist.txt<br/>2<br/>Wow<br/>-1|n/a<br/>n/a<br/>||
-| 1<br/>aboba.txt<br/>2<br/>hi<br/>-1|n/a<br/>hi<br/>||
+| 1<br/>doesnt_exist.txt<br/>2<br/>Wow<br/>-1|n/a<br/>n/a<br/>| ~~doesnt_exist~~ |
+| 1<br/>aboba.txt<br/>2<br/>hi<br/>-1|n/a<br/>hi<br/>| ~~empty~~ |
 
 ***LOADING...***
 
