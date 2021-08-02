@@ -136,7 +136,7 @@ to open and read it.
 item – specifying the path to the text file via stdin, to open, read, and output it to the console. If the file
 is empty or does not exist or any other error, then output "n/a". If -1 is applied to the input, the program should exit. After executing each menu item, except -1, there should be a new line. Build the project using the Makefile. Stage name: cipher.
 Executable file name: cipher. The executable file must be located in the root of the repository in the
-build folder, the path to the text file is also set relative to the root directory ==***
+build folder. ==***
 
 | Input | Output | File|
 | ------ | ------ | ------|
