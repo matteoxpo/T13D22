@@ -144,10 +144,12 @@ build folder. ==***
 | 1<br>abc.txt<br/>1<br/>abc.txt<br/>-1 | Hihi_haha<br/><br/>Hihi_haha<br/><br/> | Hihi_haha`\n` |
 | 1<br>doesnt_exist.t_x_t<br/>1<br/>love.txt<br/>-1 | n/a<br/>i_love_sh21<br/> | i_love_sh21 |
 
-> DON'T FORGET! All your programs are tested for the style norm and memory leaks. Start-up instructions
-> the list of tests is also in the `materials` folder
+> Before sending the task, make sure that no unnecessary entries are displayed on the screen. There should only be an answer to the task
 
 ***LOADING...***
+
+> DON'T FORGET! All your programs are tested for the style norm and memory leaks. Start-up instructions
+the list of tests is also in the `materials` folder
 
 
 ## Quest 2. Write your story.
@@ -164,6 +166,8 @@ is empty or does not exist or any other error, then output "n/a". If -1 is appli
 | 2<br/>Bek the great<br/>-1 | n/a<br/> |  |
 | 1<br/>doesnt_exist.txt<br/>2<br/>Wow<br/>-1|n/a<br/>n/a<br/>| ~~doesnt_exist~~ |
 | 1<br/>aboba.txt<br/>2<br/>hi<br/>-1|n/a<br/>hi<br/>| ~~empty~~ |
+
+> Before sending the task, make sure that no unnecessary entries are displayed on the screen. There should only be an answer to the task
 
 ***LOADING...***
 
