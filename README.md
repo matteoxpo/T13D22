@@ -158,7 +158,8 @@ Great, file reading is done.
 Now you need to practice writing to the file. You can add a function to src/cipher.c for writing arbitrary text information from the console to a text file as a new string. Menu item 2 – receiving an arbitrary text string and writing it to the loaded file.
 
 ***== Quest 2 received. Supplement the src/cipher.c program. Add menu item 2 – receiving an arbitrary line of text from the console and writing it to the end of the file uploaded in step 1. Output the contents of the file to the console. If the file
-is empty or does not exist or any other error, then output "n/a". If -1 is applied to the input, the program should exit. After executing each menu item, except -1, there should be a new line. Build the project using the Makefile. Stage name: cipher. Executable file name: cipher. ==***
+is empty or does not exist or any other error, then output "n/a". If -1 is applied to the input, the program should exit. After executing each menu item, except -1, there should be a new line. Build the project using the Makefile. Stage name: cipher. Executable file name: cipher. The executable file must be located in the root of the repository in the
+build folder. ==***
 
 | Input | Output| File |
 | ------ | ------ | ----- |
@@ -180,7 +181,8 @@ Add a file processing function to src/cipher.c that will read and encrypt all .c
 All modified files and src/cipher.c should then be saved in the repository, replacing the original ones.
 Do not forget the key as you might need some of these modules in the future.
 
-***== Quest 3 received. Supplement the src/cipher.c program. Add item 3 to the menu – encryption of all .c files using a Caesar cipher and clearing all .h files from the specified directory. The shift for a Caesar cipher is also set as a parameter via the console. Save all modified files and src/cipher.c in the repository, replacing the original ones. Build the project using the Makefile. Stage name: cipher. Executable file name: cipher. ==***
+***== Quest 3 received. Supplement the src/cipher.c program. Add item 3 to the menu – encryption of all .c files using a Caesar cipher and clearing all .h files from the specified directory. The shift for a Caesar cipher is also set as a parameter via the console. Save all modified files and src/cipher.c in the repository, replacing the original ones. Build the project using the Makefile. Stage name: cipher. Executable file name: cipher. The executable file must be located in the root of the repository in the
+build folder. ==***
 
 > This task is not processed by the automatic testing system
 
@@ -191,7 +193,8 @@ Do not forget the key as you might need some of these modules in the future.
 
 Having completed the encryption of all AI modules, you are worried that a Caesar cipher is somewhat... too simple. The AI can easily crack it. If you could use a more complex algorithm... For example, DES. You can at least try. If it fails – no problem, Caesar has already protected the important files. Put the start in menu item 4.
 
-***== Quest 4 received. Supplement the src/cipher.c program. Add item 4 to the menu – encryption of all .c files using the DES algorithm and clearing all .h files from the specified directory. Build the project using the Makefile. Stage name: cipher. Executable file name: cipher. ==***
+***== Quest 4 received. Supplement the src/cipher.c program. Add item 4 to the menu – encryption of all .c files using the DES algorithm and clearing all .h files from the specified directory. Build the project using the Makefile. Stage name: cipher. Executable file name: cipher. The executable file must be located in the root of the repository in the
+build folder. ==***
 
 > This task is not processed by the automatic testing system
 
@@ -215,7 +218,8 @@ You can organize logging in a separate module and connect it to your programs la
 As a test, you can connect logging to the src/cipher.c encryption program developed earlier, to record the main actions in the log. And don't forget to reflect all changes in the repository!
 
 ***== Quest 5 received. Create src/logger.c and src/logger.h files to implement the logger. Add log_init, logcat, and log_close functions to the files for creating a log file with the given name, writing the transmitted message in the created log file, and closing the log accordingly. Message format: an indication of the logging level (DEBUG, INFO, WARNING, ERROR), time, and the actual message. \
-Supplement the src/cipher.c program by connecting it to the created logger which writes the main actions of the program in the file (File "aaa.c" open; String wrote in the "bbb.h" file, and so on). Build the project using the Makefile. Stage name: loggin_cipher. Executable file name: logging_cipher. ==***
+Supplement the src/cipher.c program by connecting it to the created logger which writes the main actions of the program in the file (File "aaa.c" open; String wrote in the "bbb.h" file, and so on). Build the project using the Makefile. Stage name: loggin_cipher. Executable file name: logging_cipher. The executable file must be located in the root of the repository in the
+build folder.==***
 
 > This task is not processed by the automatic testing system
 
