@@ -1,13 +1,6 @@
-#ifndef LOG_LEVELS
-#define LOG_LEVELS
+#ifndef SRC_LOG_LEVELS_H_
+#define SRC_LOG_LEVELS_H_
 
-enum log_level
-{
-    debug,
-    trace,
-    info,
-    warning,
-    error
-}
+enum log_level { debug, trace, info, warning, error }
 
-#endif
+#endif  // SRC_LOG_LEVELS_H_
