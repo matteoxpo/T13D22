@@ -3,6 +3,14 @@
 #include <stdlib.h>
 #include <string.h>
 
+/*
+#ifdef LOGGING_CIPHER
+#include "log_levels.h"
+#include "logger.h"
+#endif
+*/
+#include "log_levels.h"
+#include "logger.h"
 #include "module_io.h"
 
 void menu(int shift);
@@ -16,10 +24,19 @@ void code(FILE *src, FILE *res, int shift);
 char *s21_strcat(char *str1, char *str2);
 
 int main(int argc, char *argv[]) {
+  enum log_level myLevel = 2;
+
+  char *print = getAct(myLevel);
+  printf("%s", print);
   int shift = 0;
   if (argc == 2) shift = atoi(argv[1]);
+  shift++;
+  shift--;
+#ifdef CIPHER
   menu(shift);
+#elif LOGGING_CIPHER
 
+#endif
   return 0;
 }
 
