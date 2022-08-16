@@ -17,9 +17,10 @@ int logcat(FILE* log_file, char* message, enum log_level level) {
   char* res = malloc(1000 * sizeof(char));
   res[0] = '[';
   strcat(res, act);
-  res[strlen(res) - 1] = ']';
+  res[strlen(res)] = ']';
   strcat(res, timed);
   strcat(res, message);
+  res[strlen(res)] = '\n';
   charInputInFile(log_file, res);
 
   free(act);

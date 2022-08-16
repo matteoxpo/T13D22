@@ -24,19 +24,16 @@ void code(FILE *src, FILE *res, int shift);
 char *s21_strcat(char *str1, char *str2);
 
 int main(int argc, char *argv[]) {
-  enum log_level myLevel = 2;
-
-  char *print = getAct(myLevel);
-  printf("%s", print);
   int shift = 0;
   if (argc == 2) shift = atoi(argv[1]);
   shift++;
   shift--;
-#ifdef CIPHER
-  menu(shift);
-#elif LOGGING_CIPHER
-
+#ifdef LOGGING_CIPHER
+  FILE *log = log_init("Quest5.log");
+  fclose(log);
 #endif
+  menu(shift);
+
   return 0;
 }
 
@@ -47,6 +44,11 @@ void menu(int shift) {
   while (input != -1) {
     while (!saveScan(&input)) {
       printf("n/a\n");
+#ifdef LOGGING_CIPHER
+      FILE *log = fopen("Quest5.log", "r+");
+      logcat(log, "Input error", error);
+      fclose(log);
+#endif
     }
     switch (input) {
       case 1:
@@ -65,6 +67,11 @@ void menu(int shift) {
         break;
       default:
         printf("n/a\n");
+#ifdef LOGGING_CIPHER
+        FILE *log = fopen("Quest5.log", "r+");
+        logcat(log, "Unknown command", error);
+        fclose(log);
+#endif
         break;
     }
   }
@@ -74,15 +81,30 @@ void Quest1(char *path) {
   FILE *f = NULL;
   if (path == NULL) {
     printf("n/a\n");
+#ifdef LOGGING_CIPHER
+    FILE *log = fopen("Quest5.log", "r+");
+    logcat(log, "Empty path to file", warning);
+    fclose(log);
+#endif
   } else {
     f = fopen(path, "r");
     if (f == NULL || fgetc(f) == EOF) {
       printf("n/a\n");
+#ifdef LOGGING_CIPHER
+      FILE *log = fopen("Quest5.log", "r+");
+      logcat(log, "Missing file in the specified directory", error);
+      fclose(log);
+#endif
     } else {
       rewind(f);
       char *data_from_file = charInputFromFile(f);
 
       str_output(data_from_file);
+#ifdef LOGGING_CIPHER
+      FILE *log = fopen("Quest5.log", "r+");
+      logcat(log, "Reading from file has been completed", debug);
+      fclose(log);
+#endif
       if (data_from_file != NULL) free(data_from_file);
       fclose(f);
     }
@@ -94,13 +116,22 @@ void Quest2(char *path) {
   f = fopen(path, "r+");
   if (f == NULL) {
     printf("n/a\n");
-
+#ifdef LOGGING_CIPHER
+    FILE *log = fopen("Quest5.log", "r+");
+    logcat(log, "Unknown command", error);
+    fclose(log);
+#endif
   } else {
     fseek(f, SEEK_SET, SEEK_END);
     char *write = charInput(1);
     if (write != NULL) {
       charInputInFile(f, write);
       free(write);
+#ifdef LOGGING_CIPHER
+      FILE *log = fopen("Quest5.log", "r+");
+      logcat(log, "writing to the file has been completed ", debug);
+      fclose(log);
+#endif
     }
     fclose(f);
     Quest1(path);
@@ -123,12 +154,22 @@ void Quest3(char *path, int shift) {
           FILE *file = fopen(path_file, "r");
           FILE *c_file = fopen(ent->d_name, "wb+");
           code(file, c_file, shift);
+#ifdef LOGGING_CIPHER
+          FILE *log = fopen("Quest5.log", "r+");
+          logcat(log, "Encoding of the file is completed", error);
+          fclose(log);
+#endif
           fclose(file);
           fclose(c_file);
         }
         if (ent->d_name[strlen(ent->d_name) - 1] == 'h') {
           FILE *h_file = fopen(ent->d_name, "wb+");
           fclose(h_file);
+#ifdef LOGGING_CIPHER
+          FILE *log = fopen("Quest5.log", "r+");
+          logcat(log, "The header file has been cleared", error);
+          fclose(log);
+#endif
         }
         free(path_file);
       }
