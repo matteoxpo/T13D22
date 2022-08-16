@@ -17,20 +17,31 @@ int saveScan(int *input) {
 }
 
 char *charInput(int flag) {
-  char *res = malloc(sizeof(char));
+  char *res = calloc(1, sizeof(char));
+  res[0] = '\0';
   int i = 0;
-  while (1) {
-    scanf("%c", &(res[i]));
-    char *tmp = realloc(res, sizeof(char));
-    if (tmp != NULL) res = tmp;
-    if (res != NULL) {
-      if (res[i] == '\n') {
-        if (!flag) res[i] = '\0';
+  if (res != NULL) {
+    while (1) {
+      scanf("%c", &(res[i]));
+      char *tmp = realloc(res, sizeof(char));
+      if (tmp != NULL) {
+        res = tmp;
+      } else {
+        free(res);
+        res = NULL;
         break;
       }
-      i++;
-    } else {
-      free(res);
+      if (res != NULL) {
+        if (res[i] == '\n') {
+          if (!flag) res[i] = '\0';
+          break;
+        }
+        i++;
+      } else {
+        free(res);
+        res = NULL;
+        break;
+      }
     }
   }
   return res;
@@ -53,7 +64,7 @@ int charInputInFile(FILE *f, char *write) {
   if (f == NULL && write == NULL) {
     res = 0;
   } else {
-    for (int i = 0; i < (int)strlen(write); i++) {
+    for (size_t i = 0; i < strlen(write); i++) {
       fputc(write[i], f);
     }
   }
@@ -62,4 +73,14 @@ int charInputInFile(FILE *f, char *write) {
 
 void str_output(char *str) {
   for (int i = 0; i < (int)strlen(str); i++) printf("%c", str[i]);
+}
+
+char *s21_strcat(char *str1, char *str2) {
+  int size1 = strlen(str1);
+  int size2 = strlen(str2);
+  str1 = (char *)realloc(str1, size1 + size2);
+  for (int i = size1, k = 0; i < size1 + size2; i++, k++) {
+    str1[i] = str2[k];
+  }
+  return str1;
 }

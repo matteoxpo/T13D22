@@ -15,23 +15,19 @@
 
 void menu(int shift);
 
-void Quest1(char *path);
-void Quest2(char *path);
-void Quest3(char *path, int shift);
+int Quest1(char *path);
+int Quest2(char *path);
+int Quest3(char *path, int shift);
 
 int is_type_file(char *name, char type);
 void code(FILE *src, FILE *res, int shift);
-char *s21_strcat(char *str1, char *str2);
 
 int main(int argc, char *argv[]) {
   int shift = 0;
   if (argc == 2) shift = atoi(argv[1]);
   shift++;
   shift--;
-#ifdef LOGGING_CIPHER
-  FILE *log = log_init("Quest5.log");
-  fclose(log);
-#endif
+
   menu(shift);
 
   return 0;
@@ -40,143 +36,157 @@ int main(int argc, char *argv[]) {
 void menu(int shift) {
   int input = 0;
   char *path;
-
+#ifdef LOGGING_CIPHER
+  FILE *log = log_init("Quest5.log");
+#endif
   while (input != -1) {
     while (!saveScan(&input)) {
       printf("n/a\n");
-#ifdef LOGGING_CIPHER
-      FILE *log = fopen("Quest5.log", "r+");
-      logcat(log, "Input error", error);
-      fclose(log);
-#endif
     }
     switch (input) {
       case 1:
+        if (path != NULL) free(path);
+        path = NULL;
         path = charInput(0);
-        Quest1(path);
+        if (Quest1(path)) {
+#ifdef LOGGING_CIPHER
+          logcat(log, "Reading from file has been completed.\n\0", debug);
+#endif
+        } else {
+#ifdef LOGGING_CIPHER
+          logcat(log, "Reading from file has NOT been completed.\n\0", error);
+#endif
+          if (path != NULL) free(path);
+          path = NULL;
+        }
         break;
       case 2:
-        Quest2(path);
+        if (Quest2(path)) {
+#ifdef LOGGING_CIPHER
+          logcat(log, "Writing in file has been completed.\n\0", debug);
+#endif
+        }
         break;
       case 3:
-        path = charInput(0);
-        Quest3(path, shift);
-        break;
+        if (path != NULL) free(path);
+        path = NULL;
 
+        path = charInput(0);
+        if (Quest3(path, shift)) {
+#ifdef LOGGING_CIPHER
+          logcat(log, "Codin file has been completed.\n\0", debug);
+#endif
+        } else {
+#ifdef LOGGING_CIPHER
+          logcat(log, "Coding file has NOT been completed.\n\0", error);
+#endif
+        }
+        if (path != NULL) free(path);
+        path = NULL;
+        break;
       case -1:
+#ifdef LOGGING_CIPHER
+        logcat(log, "EXIT.\n\0", debug);
+#endif
         break;
       default:
-        printf("n/a\n");
 #ifdef LOGGING_CIPHER
-        FILE *log = fopen("Quest5.log", "r+");
-        logcat(log, "Unknown command", error);
-        fclose(log);
+        logcat(log, "Unknow command.\n\0", warning);
 #endif
+        printf("n/a\n");
         break;
     }
   }
+  if (path != NULL) free(path);
+#ifdef LOGGING_CIPHER
+  if (log != NULL) log_close(log);
+#endif
 }
 
-void Quest1(char *path) {
+int Quest1(char *path) {
+  int res = 1;
   FILE *f = NULL;
   if (path == NULL) {
     printf("n/a\n");
-#ifdef LOGGING_CIPHER
-    FILE *log = fopen("Quest5.log", "r+");
-    logcat(log, "Empty path to file", warning);
-    fclose(log);
-#endif
+    res = 0;
   } else {
     f = fopen(path, "r");
     if (f == NULL || fgetc(f) == EOF) {
       printf("n/a\n");
-#ifdef LOGGING_CIPHER
-      FILE *log = fopen("Quest5.log", "r+");
-      logcat(log, "Missing file in the specified directory", error);
-      fclose(log);
-#endif
+      res = 0;
     } else {
       rewind(f);
       char *data_from_file = charInputFromFile(f);
 
       str_output(data_from_file);
-#ifdef LOGGING_CIPHER
-      FILE *log = fopen("Quest5.log", "r+");
-      logcat(log, "Reading from file has been completed", debug);
-      fclose(log);
-#endif
+
       if (data_from_file != NULL) free(data_from_file);
       fclose(f);
     }
   }
+  return res;
 }
 
-void Quest2(char *path) {
+int Quest2(char *path) {
+  int res = 1;
   FILE *f = NULL;
   f = fopen(path, "r+");
   if (f == NULL) {
     printf("n/a\n");
-#ifdef LOGGING_CIPHER
-    FILE *log = fopen("Quest5.log", "r+");
-    logcat(log, "Unknown command", error);
-    fclose(log);
-#endif
+    res = 0;
   } else {
     fseek(f, SEEK_SET, SEEK_END);
     char *write = charInput(1);
     if (write != NULL) {
       charInputInFile(f, write);
-      free(write);
-#ifdef LOGGING_CIPHER
-      FILE *log = fopen("Quest5.log", "r+");
-      logcat(log, "writing to the file has been completed ", debug);
-      fclose(log);
-#endif
+      if (write != NULL) free(write);
+    } else {
+      printf("n/a\n");
+      res = 0;
     }
     fclose(f);
     Quest1(path);
   }
+  return res;
 }
 
-void Quest3(char *path, int shift) {
+int Quest3(char *path, int shift) {
+  int res = 0;
   DIR *d;
   struct dirent *ent;
   char *slesh = "/\0";
+
   if ((d = opendir(path)) != NULL) {
     while ((ent = readdir(d)) != NULL) {
       if (is_type_file(ent->d_name, 'c') || is_type_file(ent->d_name, 'h')) {
-        char *path_file = calloc(1, sizeof(char));
-        s21_strcat(path_file, path);
-        s21_strcat(path_file, slesh);
-        s21_strcat(path_file, ent->d_name);
+        char *path_file = calloc(1000, sizeof(char));
+        strcat(path_file, path);
+        strcat(path_file, slesh);
+        strcat(path_file, ent->d_name);
 
         if (ent->d_name[strlen(ent->d_name) - 1] == 'c') {
           FILE *file = fopen(path_file, "r");
           FILE *c_file = fopen(ent->d_name, "wb+");
           code(file, c_file, shift);
-#ifdef LOGGING_CIPHER
-          FILE *log = fopen("Quest5.log", "r+");
-          logcat(log, "Encoding of the file is completed", error);
-          fclose(log);
-#endif
           fclose(file);
           fclose(c_file);
+          res = 1;
         }
         if (ent->d_name[strlen(ent->d_name) - 1] == 'h') {
           FILE *h_file = fopen(ent->d_name, "wb+");
           fclose(h_file);
-#ifdef LOGGING_CIPHER
-          FILE *log = fopen("Quest5.log", "r+");
-          logcat(log, "The header file has been cleared", error);
-          fclose(log);
-#endif
+          res = 1;
         }
-        free(path_file);
+
+        if (path_file != NULL) free(path_file);
+        path_file = NULL;
       }
     }
+    closedir(d);
   } else {
     printf("n/a\n");
   }
+  return res;
 }
 
 int is_type_file(char *name, char type) {
@@ -191,16 +201,6 @@ int is_type_file(char *name, char type) {
     }
   }
   return res;
-}
-
-char *s21_strcat(char *str1, char *str2) {
-  int size1 = strlen(str1);
-  int size2 = strlen(str2);
-  str1 = (char *)realloc(str1, size1 + size2);
-  for (int i = size1, k = 0; i < size1 + size2; i++, k++) {
-    str1[i] = str2[k];
-  }
-  return str1;
 }
 
 void code(FILE *src, FILE *res, int shift) {

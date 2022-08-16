@@ -8,7 +8,4 @@ FILE* log_init(char* filename);
 int logcat(FILE* log_file, char* message, enum log_level level);
 int log_close(FILE* log_file);
 
-char* getTime();
-char* getAct(enum log_level level);
-
 #endif  // SRC_LOGGER_H_

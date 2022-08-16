@@ -5,4 +5,3 @@ void m2_f1()
 {
     printf("TEST M2");
 }
-
