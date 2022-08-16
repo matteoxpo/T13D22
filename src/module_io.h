@@ -3,6 +3,7 @@
 
 #include <stdio.h>
 
+int saveScan(int *input);
 char *charInput(int flag);
 char *charInputFromFile(FILE *f);
 int charInputInFile(FILE *f, char *write);

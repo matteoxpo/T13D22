@@ -2,7 +2,7 @@ CC =gcc
 CFLAGS = -Wall -Werror -Wextra -c
 SOURCES = cipher.c module_io.c
 OBJECTS = $(SOURCES:.c=.o)
-EXECUTABLE = main
+EXECUTABLE = ../build/cipher
 
 all: $(OBJECTS)
 	$(CC) $(OBJECTS) -o $(EXECUTABLE)

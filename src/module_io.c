@@ -53,7 +53,7 @@ int charInputInFile(FILE *f, char *write) {
   if (f == NULL && write == NULL) {
     res = 0;
   } else {
-    for (int i = 0; i < strlen(write); i++) {
+    for (int i = 0; i < (int)strlen(write); i++) {
       fputc(write[i], f);
     }
   }
@@ -61,5 +61,5 @@ int charInputInFile(FILE *f, char *write) {
 }
 
 void str_output(char *str) {
-  for (int i = 0; i < strlen(str); i++) printf("%c", str[i]);
+  for (int i = 0; i < (int)strlen(str); i++) printf("%c", str[i]);
 }

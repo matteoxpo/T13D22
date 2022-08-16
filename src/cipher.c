@@ -3,36 +3,22 @@
 #include <stdlib.h>
 #include <string.h>
 
+#include "module_io.h"
+
 void menu(int shift);
-int saveScan(int *input);
+
 void Quest1(char *path);
 void Quest2(char *path);
 void Quest3(char *path, int shift);
-char *charInput(int flag);
-char *charInputFromFile(FILE *f);
-int charInputInFile(FILE *f, char *write);
-void str_output(char *str);
+
 int is_type_file(char *name, char type);
 void code(FILE *src, FILE *res, int shift);
+char *s21_strcat(char *str1, char *str2);
 
-char *s21_strcat(char *str1, char *str2) {
-  int size1 = strlen(str1);
-  int size2 = strlen(str2);
-  str1 = (char *)realloc(str1, size1 + size2);
-  for (int i = size1, k = 0; i < size1 + size2; i++, k++) {
-    str1[i] = str2[k];
-  }
-  return str1;
-}
-
-int main(char argc, char *argv[]) {
-  // menu(0);
-  //  system("ls ai_modules/*.c");
+int main(int argc, char *argv[]) {
   int shift = 0;
   if (argc == 2) shift = atoi(argv[1]);
   menu(shift);
-  // char *res = createCommand(path, 'c');
-  // str_output(res);
 
   return 0;
 }
@@ -109,96 +95,30 @@ void Quest3(char *path, int shift) {
   struct dirent *ent;
   char *slesh = "/\0";
   if ((d = opendir(path)) != NULL) {
-    while (ent = readdir(d)) {
+    while ((ent = readdir(d)) != NULL) {
       if (is_type_file(ent->d_name, 'c') || is_type_file(ent->d_name, 'h')) {
         char *path_file = calloc(1, sizeof(char));
         s21_strcat(path_file, path);
         s21_strcat(path_file, slesh);
         s21_strcat(path_file, ent->d_name);
-        printf("%s\n", path_file);
 
         if (ent->d_name[strlen(ent->d_name) - 1] == 'c') {
           FILE *file = fopen(path_file, "r");
           FILE *c_file = fopen(ent->d_name, "wb+");
           code(file, c_file, shift);
+          fclose(file);
+          fclose(c_file);
         }
         if (ent->d_name[strlen(ent->d_name) - 1] == 'h') {
-          FILE *c_file = fopen(ent->d_name, "wb+");
+          FILE *h_file = fopen(ent->d_name, "wb+");
+          fclose(h_file);
         }
         free(path_file);
       }
     }
-  }
-  /*
-  stdout = freopen("c_files", "wb+", stdout);
-  system("ls ai_modules/*.c");
-
-  stdout = freopen("h_files", "wb+", stdout);
-  system("ls ai_modules/*.h");
-
-  stdout = freopen("/dev/tty", "r", stdout);
-  printf("Hello!");
-  */
-}
-
-int saveScan(int *input) {
-  int res;
-  char sym;
-  if (scanf("%d%c", input, &sym) == 2 && sym == '\n') {
-    res = 1;
   } else {
-    res = 0;
-    fseek(stdin, 0, SEEK_END);
+    printf("n/a\n");
   }
-  return res;
-}
-
-char *charInput(int flag) {
-  char *res = malloc(sizeof(char));
-  int i = 0;
-  while (1) {
-    scanf("%c", &(res[i]));
-    char *tmp = realloc(res, sizeof(char));
-    if (tmp != NULL) res = tmp;
-    if (res != NULL) {
-      if (res[i] == '\n') {
-        if (!flag) res[i] = '\0';
-        break;
-      }
-      i++;
-    } else {
-      free(res);
-    }
-  }
-  return res;
-}
-
-char *charInputFromFile(FILE *f) {
-  char *res = malloc(sizeof(char));
-  char buff;
-  int counter = 0;
-  while (fread(&buff, sizeof(char), 1, f)) {
-    res = realloc(res, sizeof(char));
-    res[counter] = buff;
-    counter++;
-  }
-  return res;
-}
-
-int charInputInFile(FILE *f, char *write) {
-  int res = 1;
-  if (f == NULL && write == NULL) {
-    res = 0;
-  } else {
-    for (int i = 0; i < strlen(write); i++) {
-      fputc(write[i], f);
-    }
-  }
-  return res;
-}
-
-void str_output(char *str) {
-  for (int i = 0; i < strlen(str); i++) printf("%c", str[i]);
 }
 
 int is_type_file(char *name, char type) {
@@ -213,6 +133,16 @@ int is_type_file(char *name, char type) {
     }
   }
   return res;
+}
+
+char *s21_strcat(char *str1, char *str2) {
+  int size1 = strlen(str1);
+  int size2 = strlen(str2);
+  str1 = (char *)realloc(str1, size1 + size2);
+  for (int i = size1, k = 0; i < size1 + size2; i++, k++) {
+    str1[i] = str2[k];
+  }
+  return str1;
 }
 
 void code(FILE *src, FILE *res, int shift) {
