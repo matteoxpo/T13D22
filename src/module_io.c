@@ -1,11 +1,8 @@
+#include "module_io.h"
+
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "module_io.h"
-
-void str_output(char *str) {
-  for (int i = 0; i < (int)strlen(str); i++) printf("%c", str[i]);
-}
 
 int saveScan(int *input) {
   int res;
@@ -53,13 +50,16 @@ char *charInputFromFile(FILE *f) {
 
 int charInputInFile(FILE *f, char *write) {
   int res = 1;
-  if (f == NULL || write == NULL) {
+  if (f == NULL && write == NULL) {
     res = 0;
   } else {
-    for (int i = 0; i < (int)strlen(write); i++) {
+    for (int i = 0; i < strlen(write); i++) {
       fputc(write[i], f);
     }
   }
   return res;
 }
 
+void str_output(char *str) {
+  for (int i = 0; i < strlen(str); i++) printf("%c", str[i]);
+}

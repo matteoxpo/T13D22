@@ -16,4 +16,4 @@ rebuild: all
 	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
-	-rm *.c
+	-rm *.o

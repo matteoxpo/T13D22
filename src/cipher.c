@@ -30,11 +30,10 @@ int main(char argc, char *argv[]) {
   //  system("ls ai_modules/*.c");
   int shift = 0;
   if (argc == 2) shift = atoi(argv[1]);
-  char *path = "ai_modules";
-  Quest3(path, 5);
+  menu(shift);
   // char *res = createCommand(path, 'c');
   // str_output(res);
-  //  menu(shift);
+
   return 0;
 }
 
